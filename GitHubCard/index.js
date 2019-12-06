@@ -2,9 +2,11 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+
+//GLOBAL
 const parent = document.querySelector('.cards')
 
-
+//Get Data from gitHub API
 axios.get('https://api.github.com/users/christinakal')
 .then( (response) => {
   // handle success
@@ -12,7 +14,7 @@ axios.get('https://api.github.com/users/christinakal')
   const card = makeComponent(response.data);
   parent.appendChild(card);
 
-  //so they load after my card
+  //So they'll load after my card
   followersArray.forEach( follower => {
     createFollower(follower);
   })
@@ -59,10 +61,6 @@ function createFollower(follower){
     console.log(error);
   })
 }
-
-
-//createFollower('dustinmyers');
-
 
 
 /* Step 3: Create a function that accepts a single object as its only argument,
