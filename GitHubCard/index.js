@@ -11,6 +11,11 @@ axios.get('https://api.github.com/users/christinakal')
   console.log(response);
   const card = makeComponent(response.data);
   parent.appendChild(card);
+
+  //so they load after my card
+  followersArray.forEach( follower => {
+    createFollower(follower);
+  })
   
 })
 .catch( (error) => {
@@ -18,47 +23,6 @@ axios.get('https://api.github.com/users/christinakal')
   console.log(error);
 })
 
-
-axios.get('https://api.github.com/users/tetondan')
-.then( (response) => {
-  // handle success
-  console.log(response);
-  const card = makeComponent(response.data);
-  parent.appendChild(card);
-  
-})
-.catch( (error) => {
-  // handle error
-  console.log(error);
-})
-
-
-
-axios.get('https://api.github.com/users/dustinmyers')
-.then( (response) => {
-  // handle success
-  console.log(response);
-  const card = makeComponent(response.data);
-  parent.appendChild(card);
-  
-})
-.catch( (error) => {
-  // handle error
-  console.log(error);
-})
-
-axios.get('https://api.github.com/users/justsml')
-.then( (response) => {
-  // handle success
-  console.log(response);
-  const card = makeComponent(response.data);
-  parent.appendChild(card);
-  
-})
-.catch( (error) => {
-  // handle error
-  console.log(error);
-})
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -81,6 +45,24 @@ axios.get('https://api.github.com/users/justsml')
 */
 
 const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell'];
+
+function createFollower(follower){ 
+  axios.get(`https://api.github.com/users/${follower}`)
+  .then( (response) => {
+    // handle success
+    console.log(response);
+    const card = makeComponent(response.data);
+    parent.appendChild(card);
+  })
+  .catch( (error) => {
+    // handle error
+    console.log(error);
+  })
+}
+
+
+//createFollower('dustinmyers');
+
 
 
 /* Step 3: Create a function that accepts a single object as its only argument,
@@ -138,7 +120,6 @@ function makeComponent(data){
   //Append children
   card.appendChild(userImg);
   card.appendChild(info);
-  card.appendChild(userImg);
 
   info.appendChild(name);
   info.appendChild(username);
