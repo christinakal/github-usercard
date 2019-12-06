@@ -4,24 +4,61 @@
 */
 const parent = document.querySelector('.cards')
 
-function getData(){
-  axios.get('https://api.github.com/users/christinakal')
-  .then(function (response) {
-    // handle success
-    console.log(response);
-    const card = makeComponent(response.data);
-    parent.appendChild(card);
-    
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  })
-}
 
-getData();
+axios.get('https://api.github.com/users/christinakal')
+.then( (response) => {
+  // handle success
+  console.log(response);
+  const card = makeComponent(response.data);
+  parent.appendChild(card);
+  
+})
+.catch( (error) => {
+  // handle error
+  console.log(error);
+})
 
 
+axios.get('https://api.github.com/users/tetondan')
+.then( (response) => {
+  // handle success
+  console.log(response);
+  const card = makeComponent(response.data);
+  parent.appendChild(card);
+  
+})
+.catch( (error) => {
+  // handle error
+  console.log(error);
+})
+
+
+
+axios.get('https://api.github.com/users/dustinmyers')
+.then( (response) => {
+  // handle success
+  console.log(response);
+  const card = makeComponent(response.data);
+  parent.appendChild(card);
+  
+})
+.catch( (error) => {
+  // handle error
+  console.log(error);
+})
+
+axios.get('https://api.github.com/users/justsml')
+.then( (response) => {
+  // handle success
+  console.log(response);
+  const card = makeComponent(response.data);
+  parent.appendChild(card);
+  
+})
+.catch( (error) => {
+  // handle error
+  console.log(error);
+})
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -43,7 +80,8 @@ getData();
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell'];
+
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -67,7 +105,7 @@ const followersArray = [];
 function makeComponent(data){
 
   // Create HTML elements
-  const card = document.createElement('div'),
+  const card = document.createElement('div'), 
         userImg = document.createElement('img'),
         info = document.createElement('div'),
         name = document.createElement('h3'),
@@ -117,6 +155,7 @@ function makeComponent(data){
   return card;
   
 };
+
 
 
 /* List of LS Instructors Github username's: 
